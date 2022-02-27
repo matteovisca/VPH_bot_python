@@ -1,0 +1,88 @@
+// Copyright 2015 gRPC authors.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//Commento
+syntax = "proto3";
+
+//option java_multiple_files = true;
+//option java_package = "io.grpc.examples.helloworld";
+//option java_outer_classname = "v0449gRpcProto";
+//option objc_class_prefix = "ZZZ";
+
+package v0449gRpcMicroS;
+
+//// The greeting service definition.
+//service Greeter {
+//  // Sends a greeting
+//  rpc SayHello (HelloRequest) returns (HelloReply) {}
+//}
+service v0449gRpcMicroS {
+  // Sends a command to generate report
+  rpc reqGen(svcReportRequest) returns (svcReportResponse) {}
+  rpc reqStatus(svcStatusRequest) returns (svcReportResponse) {}
+  rpc GenerateReport(svcReportRequest) returns (stream svcReportResponse) {}
+
+}
+
+// Response.
+message svcReportResponse {
+  //Value of state of microservice
+  int64 stateSrv =1;
+  //Percentuale of complete of generation
+  int64 percWork = 2;
+  //State of complete
+  bool status = 3;
+  //Message of state
+  string myMessage = 4;
+  //Return the token
+  string activeToken = 5;
+}
+
+
+//Request:
+
+// Request init report.
+message svcReportRequest {
+  //datetime of init period of report
+  string initRepo = 1;
+  //datetime of end period of report
+  string endRepo =2;
+  //divisor
+  int64 divisor = 3;
+  //identificator of header report
+  int64 idReport = 4;
+  //identificator of user do make a request
+  int64 idUser = 5;
+  //Path where microservicesave the file
+  string pathToSave = 6;
+
+}
+
+// Request staus
+message svcStatusRequest {
+  int64 MyRequest = 1;
+  string getStatus = 2;
+  string tokenRequest = 3;
+}
+
+
+
+//// The request message containing the user's name.
+message createReportResponse {
+  svcReportResponse name = 1;
+}
+
+
+message createReportRequest {
+  svcReportRequest mex = 1;
+}

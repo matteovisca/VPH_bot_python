@@ -1,0 +1,19 @@
+version: "3.9"  # optional since v1.27.0
+services:
+  bot:
+    image: teo/bot:latest
+    container_name: telegram_bot_report
+    restart: always
+    ports:
+      - "30110:30110"
+    volumes:
+      - /mnt/repServer/:/mnt/repServer/
+      - reportDockerVol:/var/log
+    environment:
+      REPO: $REPO
+      PORTGRPC: '30110'
+      IPGRPC: '192.168.0.240'
+      BOT_TOKEN: ''
+
+volumes:
+  reportDockerVol: {}

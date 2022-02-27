@@ -1,0 +1,36 @@
+syntax = "proto3";
+package VPH_Repo;
+service VPH_Repo {
+  rpc reqTestProgress(svcProgressRequest) returns (svcProgressResponse) {}
+  rpc reqTestHeader(svcHeaderRequest) returns (svcHeaderResponse) {}
+  rpc reqTestGeneric(svcRequest) returns (svcResponse) {}
+
+
+}
+
+message svcProgressRequest{
+  string myReq = 1;
+}
+
+message svcProgressResponse{
+    string myRes = 1;
+    int64 numCicli = 2;
+    int64 tempoTrascorso = 3;
+}
+
+message svcHeaderRequest{
+    string myReq = 1;
+}
+
+message svcHeaderResponse{
+    string myRes = 1;
+
+}
+
+message svcRequest{
+    string myReq = 1;
+}
+
+message svcResponse{
+    string myRes = 1;
+}
